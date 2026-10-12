@@ -1,30 +1,32 @@
 # GuardX Antivirus
 
-GuardX is a powerful, native-core Android antivirus and system integrity protection tool. It combines high-performance C++ scanning with modern Android security APIs.
+GuardX, Android için yerel C++ tarama bileşeni ve Kotlin arayüzü içeren bir antivirüs/cihaz bütünlüğü prototipidir. Aşağıdaki yetenekler proje açıklamasında listelenmiştir; her özellik bağımsız olarak doğrulanmış bir release garantisi değildir.
 
-## Key Features
+## Projede listelenen özellikler
+- Yerel imza veritabanı ve bulut sorgusu ile tarama
+- TEE/Verified Boot ve Google Play Integrity kontrolleri
+- Root ve hooking tespiti
+- Davranış izleme ve uygulama bütünlüğü önlemleri
 
-- **Multi-Engine Scanning**: Hybrid scanning using local signature database and cloud-based lookup.
-- **System Integrity Verification**:
-    - **TEE Hardware Attestation**: Verified boot and bootloader status checks via Android KeyStore.
-    - **Google Play Integrity**: Deep device and app integrity verdicts.
-- **Behavioral Monitor**: Real-time syscall analysis using ptrace and /proc polling to detect code injection, privilege escalation, and suspicious activity.
-- **Root & Hook Detection**: Multi-layered checks for su binaries, KernelSU, APatch, and common hooking frameworks.
-- **Self-Protection**: Integrated Seccomp-BPF filters to prevent tampering with the app process.
+## Teknik bilgiler
+- Kotlin, Jetpack Compose ve C++17
+- Package/application ID: `com.selinuxassistant.guardx`
+- Proje ayarı `GuardX` olarak adlandırılmıştır.
 
-## Technical Details
+## Derleme
 
-- **Language**: Kotlin (UI & Service), C++17 (Core Engine)
-- **UI Framework**: Jetpack Compose with Material 3
-- **NDK**: High-performance native analysis and kernel-level checks.
-- **Package Name**: `com.selinuxassistant.guardx`
+Depoda Gradle wrapper (`gradlew`) bulunmuyor. Android Studio ile açıp Gradle senkronizasyonu yapın; terminalden derleme için uyumlu sistem Gradle’ı ile Android SDK/NDK ve CMake kurulumu gerekir:
 
-## Building
-
-To build the project, use the Gradle wrapper:
 ```bash
-./gradlew assembleDebug
+gradle assembleDebug
 ```
 
-## Disclaimer
-This project is for educational and security research purposes.
+Derleme burada çalıştırılmadı.
+
+## Sürüm durumu
+
+Ana daldaki Android yapılandırması `versionName 1.1.0` ve `versionCode 1` bildiriyor. Son yayımlanan release etiketi [`v1.0-alpha`](https://github.com/lezgindurmaz/SelinuxAssistantProject2/releases/tag/v1.0-alpha); bu nedenle ana daldaki 1.1.0 değeriyle aynı yayımlanmış sürüm olarak varsayılmamalıdır. Yeni release oluşturulmadı ve build sürüm numaraları değiştirilmedi.
+
+## Uyarı
+
+Bu proje eğitim ve güvenlik araştırması amacıyla tanımlanmıştır. Release dosyaları ve notları [GitHub Releases](https://github.com/lezgindurmaz/SelinuxAssistantProject2/releases) bölümündedir.
